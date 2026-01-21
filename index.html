@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Future Bright College - Course Enrollment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+        .container {
+            width: 400px;
+            margin: 80px auto;
+            background: #ffffff;
+            color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
+        }
+        h2 {
+            text-align: center;
+            color: #1e3c72;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2a5298;
+        }
+        .success {
+            text-align: center;
+            color: green;
+            font-weight: bold;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Future Bright College</h2>
+    <form id="enrollForm">
+        <label>Student Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email Address</label>
+        <input type="email" id="email" required>
+
+        <label>Select Course</label>
+        <select id="course" required>
+            <option value="">-- Select Course --</option>
+            <option>B.Tech</option>
+            <option>MCA</option>
+            <option>M.Tech</option>
+            <option>BBA</option>
+        </select>
+
+        <button type="submit">Pay & Enroll</button>
+    </form>
+
+    <div class="success" id="successMsg">
+        🎉 Enrollment Successful! <br><br>
+        You have successfully enrolled in the selected course.  
+        You will be shortly notified for the next update.
+    </div>
+</div>
+
+<footer>
+    © 2026 Future Bright College | All Rights Reserved
+</footer>
+
+<script>
+    document.getElementById("enrollForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let course = document.getElementById("course").value;
+
+        if (!course) {
+            alert("Please select a course.");
+            return;
+        }
+
+        // Simulated payment confirmation
+        let paymentSuccess = confirm(
+            "Payment Successful!\n\n" +
+            "Student: " + name + "\n" +
+            "Course: " + course + "\n\n" +
+            "Click OK to confirm enrollment."
+        );
+
+        if (paymentSuccess) {
+            document.getElementById("successMsg").style.display = "block";
+
+            alert(
+                "Email Sent Successfully!\n\n" +
+                "To: " + email + "\n\n" +
+                "Subject: Course Enrollment Confirmation\n\n" +
+                "Message:\nYou have successfully enrolled in " + course +
+                ". You will get shortly notified for the next update.\n\n" +
+                "- Future Bright College"
+            );
+
+            document.getElementById("enrollForm").reset();
+        }
+    });
+</script>
+
+</body>
+</html>
